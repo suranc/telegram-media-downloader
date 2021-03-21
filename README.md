@@ -12,4 +12,4 @@ The `app_id` and `app_hash` can also be set in environment variables, with `TELE
 
 To run locally, install the required Python modules with `pip install -r requirements.txt`
 
-Alternatively, you can run the latest build from a docker container like `docker run -it -v $PWD:/save -w /save -u 1000 -e TELEGRAM_APP_ID=8675309 -e TELEGRAM_APP_HASH=f20b326c0172cdfce9108394fa8ab9f7 Telegram-Channel --start start-video.mp4`
+Alternatively, you can run the latest build from a docker container like `docker run -it -v $PWD:/save -w /save -u 1000 -e TELEGRAM_APP_ID=8675309 -e TELEGRAM_APP_HASH=f20b326c0172cdfce9108394fa8ab9f7 ghcr.io/suranc/tmd Telegram-Channel --start start-video.mp4`

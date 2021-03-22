@@ -13,10 +13,10 @@ parser.add_argument('--start', dest='start', metavar='Video.mp4',
                     help='Filename to start on')
 parser.add_argument('--end', dest='end', metavar='Video.mp4',
                     help='Filename to end on')
-parser.add_argument('--app_id', dest='app_id', metavar='8675309',
-                    help='App ID for your Telegram client, one can be obtained from https://my.telegram.org, under API Development.  Overrides the TELEGRAM_APP_ID environment variable')
-parser.add_argument('--app_hash', dest='app_hash', metavar='f20b326c0172cdfce9108394fa8ab9f7',
-                    help='App Hash for your Telegram client, one can be obtained from https://my.telegram.org, under API Development.  Overrides the TELEGRAM_APP_HASH environment variable')
+parser.add_argument('--api_id', dest='api_id', metavar='8675309',
+                    help='App ID for your Telegram client, one can be obtained from https://my.telegram.org, under API Development.  Overrides the TELEGRAM_API_ID environment variable')
+parser.add_argument('--api_hash', dest='api_hash', metavar='f20b326c0172cdfce9108394fa8ab9f7',
+                    help='App Hash for your Telegram client, one can be obtained from https://my.telegram.org, under API Development.  Overrides the TELEGRAM_API_HASH environment variable')
 
 args = parser.parse_args()
 
@@ -37,13 +37,13 @@ if (args.end != None):
 
 # Need an api_id and api_hash, and a download.session file in the working directory (a new one will be created through MFA if one does)
 # The api_id and api_hash can be gotten from https://my.telegram.org, under API Development.
-app_id = args.app_id or os.getenv('TELEGRAM_APP_ID')
-app_hash = args.app_hash or os.getenv('TELEGRAM_APP_HASH')
-if ((not app_id) or (not app_hash)):
-    print ("Error:  app_id and app_hash must be passed with --app_id and --app_hash, or in the environment variables TELEGRAM_APP_ID and TELEGRAM_APP_HASH")
+api_id = args.api_id or os.getenv('TELEGRAM_API_ID')
+api_hash = args.api_hash or os.getenv('TELEGRAM_API_HASH')
+if ((not api_id) or (not api_hash)):
+    print ("Error:  api_id and api_hash must be passed with --api_id and --api_hash, or in the environment variables TELEGRAM_API_ID and TELEGRAM_API_HASH")
     sys.exit(1)
 
-# Create a telegram client with the given app_id and app_hash
+# Create a telegram client with the given api_id and api_hash
 # Will reuse an existing download.session in working directory, otherwise will begin an interactive mfa flow
 client = TelegramClient('download', api_id, api_hash)
 

@@ -7,4 +7,4 @@ RUN pip install -r requirements.txt
 WORKDIR /app
 ADD tmd.py /app
 
-ENTRYPOINT /app/tmd.py
+ENTRYPOINT ["/usr/local/bin/python3", "/app/tmd.py"]
